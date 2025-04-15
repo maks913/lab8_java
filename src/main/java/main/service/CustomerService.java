@@ -57,12 +57,10 @@ public class CustomerService {
                 .collect(Collectors.toList());
     }
 
-    public int findCustomerById(List<Customer> customers, int customerId) {
+    public List<Customer> findCustomerById(List<Customer> customers, int customerId) {
         return customers.stream()
                 .filter(customer -> customer.getId() == customerId)
-                .mapToInt(customer -> (int) customer.getAveragePurchase())
-                .findFirst()
-                .orElse(-1);
+                .collect(Collectors.toList());
     }
 
     public void addCustomer(List<Customer> customers, Customer newCustomer) {

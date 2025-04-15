@@ -45,11 +45,11 @@ public class Controller {
                 case 5->{
                     view.showMessage("Enter customer ID:");
                     int customerId = scanner.nextInt();
-                    int avgPurchase = customerService.findCustomerById(customers,customerId);
-                    if(avgPurchase == -1) {
+                    List<Customer> customer = customerService.findCustomerById(customers,customerId);
+                    if(customer == null || customer.isEmpty()) {
                         view.showMessage("Customer not found");
                     }else{
-                        view.showMessage("Average purchase:" + avgPurchase);
+                        view.showCustomers(customer);
                     }
                 }
                 case 6 ->{
